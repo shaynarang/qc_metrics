@@ -11,9 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20141117165343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "principal_investigators", force: true do |t|
+    t.string "first_name"
+    t.string "last_name"
+  end
+
+  create_table "projects", force: true do |t|
+    t.integer "number"
+    t.integer "principal_investigator_id"
+  end
+
+  add_index "projects", ["principal_investigator_id"], name: "index_projects_on_principal_investigator_id", using: :btree
+
+  create_table "samples", force: true do |t|
+    t.string  "identifier"
+    t.integer "total_reads"
+    t.integer "average_q_score"
+    t.integer "percent_five_x_coverage"
+    t.integer "percent_ten_x_coverage"
+    t.integer "percent_twenty_x_coverage"
+    t.integer "percent_thirty_x_coverage"
+    t.integer "project_id"
+  end
+
+  add_index "samples", ["project_id"], name: "index_samples_on_project_id", using: :btree
 
 end
