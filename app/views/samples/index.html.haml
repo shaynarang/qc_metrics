@@ -1,0 +1,32 @@
+.col-md-12.col-sm-12.col-xs-12
+  %h1 Samples
+
+.col-md-12.col-sm-12.col-xs-12
+  %table
+    %tr
+      %th Principal Investigator
+      %th Project Number
+      %th Identifier
+      %th Total Reads
+      %th Average Q Score
+      %th Percent 5x Coverage
+      %th Percent 10x Coverage
+      %th Percent 20x Coverage
+      %th Percent 30x Coverage
+
+    - @samples.each do |sample|
+      %tr
+        %td= "#{sample.principal_investigator.first_name} #{sample.principal_investigator.last_name}"
+        %td= sample.project.number
+        %td= sample.identifier
+        %td= sample.total_reads
+        %td= sample.average_q_score
+        %td= sample.percent_five_x_coverage
+        %td= sample.percent_ten_x_coverage
+        %td= sample.percent_twenty_x_coverage
+        %td= sample.percent_thirty_x_coverage
+
+.col-md-12.col-sm-12.col-xs-12
+  = form_tag import_samples_path, :multipart => true do
+    = file_field_tag :file
+    = submit_tag "Import"

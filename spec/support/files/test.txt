@@ -1,0 +1,9 @@
+PI	Project Number	Sample ID	Total Reads	Average Q-Score	Percent 5x Coverage	Percent 10x Coverage	Percent 20x Coverage	Percent 30x Coverage
+Marley Hodges	9001	9001-MH-1	52220	26	95	87	78	61
+Marcie Garrett	9002	9002-MG-9	57318	21	98	86	73	68
+Ruadhi Gilliam	9003	9003-RG-1	56004	28	95	94	84	62
+Mike Bordie	9004	9004-MB-11	55248	26	98	89	74	63
+Lesia Cliton	9005	9005-LC-1	53360	25	96	91	77	65
+Ruadhi Gilliam	9006	9006-RG-1	55120	23	96	90	78	66
+Marcie Garrett	9008	9008-MG-14	50997	23	96	94	82	62
+Ruadhi Gilliam	9030	9030-RG-20	52849	27	97	86	79	64
