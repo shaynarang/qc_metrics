@@ -1,0 +1,19 @@
+!!!
+%html
+  %head
+    %title QcMetrics
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    - if notice
+      .col-md-12.col-sm-12.col-xs.12
+        %p.notice
+          = notice
+
+    - if alert
+      .col-md-12.col-sm-12.col-xs.12
+        %p.alert
+          = alert
+
+    = yield
