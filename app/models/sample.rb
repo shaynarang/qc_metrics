@@ -2,6 +2,9 @@ class Sample < ActiveRecord::Base
   belongs_to :project
   delegate :principal_investigator, :to => :project, :allow_nil => true
 
+  scope :order_by_principal_investigator, -> { joins(:project => :principal_investigator).order('last_name') }
+  scope :order_by_project_number, -> { joins(:project).order('number') }
+
   def self.import file
     # ensure file is readable
     file.rewind

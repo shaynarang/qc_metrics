@@ -4,15 +4,15 @@
 .col-md-12.col-sm-12.col-xs-12
   %table
     %tr
-      %th Principal Investigator
-      %th Project Number
-      %th Identifier
-      %th Total Reads
-      %th Average Q Score
-      %th Percent 5x Coverage
-      %th Percent 10x Coverage
-      %th Percent 20x Coverage
-      %th Percent 30x Coverage
+      %th= link_to "Principal Investigator", :sort => "principal_investigator"
+      %th= link_to "Project Number", :sort => "project_number"
+      %th= link_to "Identifier", :sort => "created_at"
+      %th= link_to "Total Reads", :sort => "total_reads"
+      %th= link_to "Average Q Score", :sort => "average_q_score"
+      %th= link_to "Percent 5x Coverage", :sort => "percent_five_x_coverage"
+      %th= link_to "Percent 10x Coverage", :sort => "percent_ten_x_coverage"
+      %th= link_to "Percent 20x Coverage", :sort => "percent_twenty_x_coverage"
+      %th= link_to "Percent 30x Coverage", :sort => "percent_thirty_x_coverage"
 
     - @samples.each do |sample|
       %tr

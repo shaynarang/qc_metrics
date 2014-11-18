@@ -27,31 +27,39 @@ describe Sample do
     end
   end
 
-  describe "import" do
+  describe "class methods" do
     before(:all) do
       file = Rack::Test::UploadedFile.new("spec/support/files/test.txt", "text/txt")
       Sample.import(file)
-    end
-
-    it "creates the correct amount of principal investigators" do
-      expect(PrincipalInvestigator.count).to eq(5)
-    end
-
-    it "creates the correct amount of projects" do
-      expect(Project.count).to eq(8)
-    end
-
-    it "creates the correct amount of samples" do
-      expect(Sample.count).to eq(8)
-    end
-  end
-
-  describe "attributes" do
-    before(:all) do
-      file = Rack::Test::UploadedFile.new("spec/support/files/test.txt", "text/txt")
       @row_array = []
       CSV.foreach(file.path, { :headers => true, :col_sep => "\t"  }) do |row|
         @row_array.push(row)
+      end
+    end
+
+    context "scopes" do
+      it "orders by principal investigator last name" do
+        last_names = Sample.order_by_principal_investigator.pluck(:last_name)
+        expect(last_names).to eq(["Bordie", "Cliton", "Garrett", "Garrett", "Gilliam", "Gilliam", "Gilliam", "Hodges"])
+      end
+
+      it "orders by project number" do
+        project_numbers = Sample.order_by_project_number.pluck(:number)
+        expect(project_numbers).to eq([9001, 9002, 9003, 9004, 9005, 9006, 9008, 9030])
+      end
+    end
+
+    context "import" do
+      it "creates the correct amount of principal investigators" do
+        expect(PrincipalInvestigator.count).to eq(5)
+      end
+
+      it "creates the correct amount of projects" do
+        expect(Project.count).to eq(8)
+      end
+
+      it "creates the correct amount of samples" do
+        expect(Sample.count).to eq(8)
       end
     end
 
