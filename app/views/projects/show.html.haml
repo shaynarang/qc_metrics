@@ -1,0 +1,25 @@
+.col-md-12.col-sm-12.col-xs-12
+  %h2= "Project Number: #{@project.number}"
+  %h2= link_to "#{@project.principal_investigator.first_name} #{@project.principal_investigator.last_name}", principal_investigator_path(@project.principal_investigator.id)
+
+  %table
+    %tr
+      %th Identifier
+      %th Total Reads
+      %th Average Q Score
+      %th Percent 5x Coverage
+      %th Percent 10x Coverage
+      %th Percent 20x Coverage
+      %th Percent 30x Coverage
+
+    - @project_samples.each do |sample|
+      %tr
+        %td= sample.identifier
+        %td= sample.total_reads
+        %td= sample.average_q_score
+        %td= sample.percent_five_x_coverage
+        %td= sample.percent_ten_x_coverage
+        %td= sample.percent_twenty_x_coverage
+        %td= sample.percent_thirty_x_coverage
+
+  = link_to "Back to Index", root_url
