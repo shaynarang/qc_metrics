@@ -9,10 +9,10 @@ class Sample < ActiveRecord::Base
     CSV.foreach(file.path, { :headers => true, :col_sep => "\t"  }) do |row|
 
       # create principal investor from hash of attributes
-      principal_investor = PrincipalInvestigator.create(principal_investor_attributes(row[0]))
+      principal_investor = PrincipalInvestigator.find_or_create_by(principal_investor_attributes(row[0]))
 
       # create project from hash of attributes
-      project = Project.create(project_attributes(row[1]))
+      project = Project.find_or_create_by(project_attributes(row[1]))
 
       # associate project with principal investor
       principal_investor.projects << project

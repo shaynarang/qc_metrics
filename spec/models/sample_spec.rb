@@ -34,7 +34,7 @@ describe Sample do
     end
 
     it "creates the correct amount of principal investigators" do
-      expect(PrincipalInvestigator.count).to eq(8)
+      expect(PrincipalInvestigator.count).to eq(5)
     end
 
     it "creates the correct amount of projects" do
@@ -43,16 +43,6 @@ describe Sample do
 
     it "creates the correct amount of samples" do
       expect(Sample.count).to eq(8)
-    end
-
-    it "associates the correct project with the correct principal investigator" do
-      expect(PrincipalInvestigator.first.projects.first.id).to eq(Project.first.id)
-      expect(PrincipalInvestigator.last.projects.last.id).to eq(Project.last.id)
-    end
-
-    it "associates the correct sample with the correct project" do
-      expect(Project.first.samples.first.id).to eq(Sample.first.id)
-      expect(Project.last.samples.last.id).to eq(Sample.last.id)
     end
   end
 
