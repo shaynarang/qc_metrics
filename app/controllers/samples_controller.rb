@@ -1,9 +1,14 @@
 class SamplesController < ApplicationController
   def index
-    if params[:sort] == "principal_investigator"
+    case params[:sort]
+    when "principal_investigator"
       @samples = Sample.order_by_principal_investigator
-    elsif params[:sort] == "project_number"
+    when "project_number"
       @samples = Sample.order_by_project_number
+    when "passable"
+      @samples = Sample.passable
+    when "unpassable"
+      @samples = Sample.unpassable
     else
       @samples = Sample.order(sort_column)
     end

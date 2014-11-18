@@ -48,4 +48,20 @@ class Sample < ActiveRecord::Base
     percent_thirty_x_coverage = row[8]
     { "identifier" => identifier, "total_reads" => total_reads, "average_q_score" => average_q_score, "percent_five_x_coverage" => percent_five_x_coverage, "percent_ten_x_coverage" => percent_ten_x_coverage, "percent_twenty_x_coverage" => percent_twenty_x_coverage, "percent_thirty_x_coverage" => percent_thirty_x_coverage }
   end
+
+  def self.passable
+    where('percent_five_x_coverage > 98')
+    .where('percent_ten_x_coverage > 90')
+    .where('percent_twenty_x_coverage > 75')
+    .where('percent_thirty_x_coverage > 65').order(:id)
+  end
+
+  def self.unpassable
+    passable_sample_ids = Sample.passable.pluck(:id)
+    Sample.where.not(:id => passable_sample_ids)
+  end
+
+  def passable?
+    Sample.passable.pluck(:id).include?(self.id)
+  end
 end

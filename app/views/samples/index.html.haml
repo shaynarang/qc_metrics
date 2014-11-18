@@ -2,6 +2,12 @@
   %h1 Samples
 
 .col-md-12.col-sm-12.col-xs-12
+  %h2 Filters
+  = link_to "Passable", :sort => "passable"
+  = link_to "Unpassable", :sort => "unpassable"
+  = link_to "All", :sort => "all"
+
+.col-md-12.col-sm-12.col-xs-12
   %table
     %tr
       %th= link_to "Principal Investigator", :sort => "principal_investigator"
@@ -13,6 +19,7 @@
       %th= link_to "Percent 10x Coverage", :sort => "percent_ten_x_coverage"
       %th= link_to "Percent 20x Coverage", :sort => "percent_twenty_x_coverage"
       %th= link_to "Percent 30x Coverage", :sort => "percent_thirty_x_coverage"
+      %th= "Passable?"
 
     - @samples.each do |sample|
       %tr
@@ -25,6 +32,7 @@
         %td= sample.percent_ten_x_coverage
         %td= sample.percent_twenty_x_coverage
         %td= sample.percent_thirty_x_coverage
+        %td= sample.passable? ? "Yes" : "No"
 
 .col-md-12.col-sm-12.col-xs-12
   = form_tag import_samples_path, :multipart => true do

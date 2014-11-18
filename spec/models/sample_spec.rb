@@ -40,12 +40,29 @@ describe Sample do
     context "scopes" do
       it "orders by principal investigator last name" do
         last_names = Sample.order_by_principal_investigator.pluck(:last_name)
-        expect(last_names).to eq(["Bordie", "Cliton", "Garrett", "Garrett", "Gilliam", "Gilliam", "Gilliam", "Hodges"])
+        expect(last_names).to eq(["Bordie", "Cliton", "Garrett", "Garrett", "Gilliam", "Gilliam", "Gilliam", "Gilliam", "Hodges"])
       end
 
       it "orders by project number" do
         project_numbers = Sample.order_by_project_number.pluck(:number)
-        expect(project_numbers).to eq([9001, 9002, 9003, 9004, 9005, 9006, 9008, 9030])
+        expect(project_numbers).to eq([9001, 9002, 9003, 9004, 9005, 9006, 9006, 9008, 9030])
+      end
+
+      it "filters passable samples" do
+        expect(Sample.unpassable.pluck(:identifier)).to_not include(["9001-MH-1", "9002-MG-9", "9003-RG-1", "9004-MB-11", "9005-LC-1", "9006-RG-1", "9008-MG-14", "9030-RG-20"])
+        expect(Sample.passable.pluck(:identifier)).to eq(["9006-RG-7"])
+      end
+
+      it "filters unpassable samples" do
+        expect(Sample.unpassable.pluck(:identifier)).to_not include(["9006-RG-7"])
+        expect(Sample.unpassable.pluck(:identifier)).to eq(["9001-MH-1", "9002-MG-9", "9003-RG-1", "9004-MB-11", "9005-LC-1", "9006-RG-1", "9008-MG-14", "9030-RG-20"])
+      end
+    end
+
+    context "passable?" do
+      it "returns true or false for passable samples" do
+        expect(Sample.first.passable?).to eq(false)
+        expect(Sample.last.passable?).to eq(true)
       end
     end
 
@@ -59,7 +76,7 @@ describe Sample do
       end
 
       it "creates the correct amount of samples" do
-        expect(Sample.count).to eq(8)
+        expect(Sample.count).to eq(9)
       end
     end
 
