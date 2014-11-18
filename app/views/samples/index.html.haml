@@ -16,7 +16,7 @@
 
     - @samples.each do |sample|
       %tr
-        %td= "#{sample.principal_investigator.first_name} #{sample.principal_investigator.last_name}"
+        %td= link_to "#{sample.principal_investigator.first_name} #{sample.principal_investigator.last_name}", principal_investigator_path(sample.principal_investigator.id)
         %td= sample.project.number
         %td= sample.identifier
         %td= sample.total_reads
