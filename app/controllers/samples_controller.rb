@@ -15,11 +15,12 @@ class SamplesController < ApplicationController
   end
 
   def import
-    raise "File Existence Error" if params[:file].blank?
-    raise "File Type Error" if File.basename(params[:file]).split(".").last != "txt"
-    raise "File Format Error" if !params[:file].read.include?("\t")
-    Sample.import(params[:file])
-    redirect_to root_url, :notice => "Samples imported!"
+    if params[:file].blank?
+      redirect_to root_url, :notice => "Please add a file to upload."
+    else
+      Sample.import(params[:file])
+      redirect_to root_url, :notice => "Samples imported!"
+    end
   end
 
   private
