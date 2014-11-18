@@ -25,6 +25,15 @@ This is a test-driven web application that imports and parses a proprietary tab-
   * Ruby 2.1.2
   * PostgreSQL 9.3.4
 
+### Additional Tool Chain Notes
+  * I used Poltergeist for testing, so you will need PhantomJS installed (`brew install phantomjs`, for instance).
+
+### Project Setup
+  1. Install things in the tool chain
+  2. Run `bundle`
+  3. Run `rake db:create:all` and `rake db:migrate` to set up your database
+  4. Run `rake` and confirm that all of the tests are passing for you.
+
 ##Author:
 
 Akshay 'Shay' Narang
