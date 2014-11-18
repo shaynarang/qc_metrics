@@ -1,7 +1,10 @@
 .col-md-12.col.sm-12.col-xs-12
-  %h1= "#{@principal_investigator.first_name} #{@principal_investigator.last_name}"
+  #pi_title_section
+    %h1= "#{@principal_investigator.first_name} #{@principal_investigator.last_name}"
 
-  - @principal_investigator.projects.each do |project|
-    %h2= link_to "Project Number: #{project.number}", project_path(project.id)
+  #project_list
+    - @principal_investigator.projects.each do |project|
+      %h2= link_to "Project Number: #{project.number}", project_path(project.id)
 
-  = link_to "Back to Index", root_url
+  .root_link
+    = link_to "Back to Index", root_url

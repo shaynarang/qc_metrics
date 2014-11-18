@@ -21,7 +21,7 @@ class Sample < ActiveRecord::Base
       principal_investor.projects << project
 
       # create sample from hash of attributes
-      sample = Sample.create(sample_attributes(row))
+      sample = Sample.find_or_create_by(sample_attributes(row))
 
       # associate sample with project
       project.samples << sample

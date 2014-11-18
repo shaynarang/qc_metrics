@@ -1,11 +1,19 @@
-.col-md-12.col-sm-12.col-xs-12
-  %h1 Samples
+.col-md-4.col-sm-12.col-xs-12
+  .title_section
+    %h1 VANTAGE SAMPLES
 
-.col-md-12.col-sm-12.col-xs-12
-  %h2 Filters
-  = link_to "Passable", :sort => "passable"
-  = link_to "Unpassable", :sort => "unpassable"
-  = link_to "All", :sort => "all"
+.col-md-4.col-sm-12.col-xs-12
+  #filter_section
+    Filter by:
+    = link_to "PASSABLE", :sort => "passable"
+    = link_to "UNPASSABLE", :sort => "unpassable"
+    = link_to "ALL", :sort => "all"
+
+.col-md-4.col-sm-12.col-xs-12
+  #import_form
+    = form_tag import_samples_path, :multipart => true do
+      = file_field_tag :file
+      = submit_tag "IMPORT"
 
 .col-md-12.col-sm-12.col-xs-12
   %table
@@ -19,7 +27,7 @@
       %th= link_to "Percent 10x Coverage", :sort => "percent_ten_x_coverage"
       %th= link_to "Percent 20x Coverage", :sort => "percent_twenty_x_coverage"
       %th= link_to "Percent 30x Coverage", :sort => "percent_thirty_x_coverage"
-      %th= "Passable?"
+      %th= "PASSABLE?"
 
     - @samples.each do |sample|
       %tr
@@ -33,8 +41,3 @@
         %td= sample.percent_twenty_x_coverage
         %td= sample.percent_thirty_x_coverage
         %td= sample.passable? ? "Yes" : "No"
-
-.col-md-12.col-sm-12.col-xs-12
-  = form_tag import_samples_path, :multipart => true do
-    = file_field_tag :file
-    = submit_tag "Import"

@@ -1,0 +1,93 @@
+body {
+  background-color: black !important;
+}
+
+td, th {
+  text-align: center;
+  border: 1px solid #f1ecd8;
+  color: white;
+}
+
+th a {
+  text-transform: uppercase;
+}
+
+table {
+  border: 4px solid #ffb84c;
+  border-radius: 25px;
+  margin: 0 auto;
+}
+
+.title_section, #filter_section, #import_form {
+  height: 100px;
+  margin: 4% 0;
+  padding: 2% 0;
+  border: 4px solid #ffb84c;
+  border-radius: 5px;
+  text-align: center;
+  background-color: #f1ecd8;
+}
+
+.root_link, #project_list {
+  text-align: center;
+}
+
+.root_link {
+  margin: 5% 35%;
+  width: 30%;
+}
+
+.root_link a {
+  padding: 5%;
+  border: 2px solid #ffb84c;
+  border-radius: 5px;
+  background-color: white;
+  color: black !important;
+}
+
+#pi_title_section, #project_title_section {
+  width: 60%;
+  margin: 4% 20%;
+  padding: 2% 0;
+  border: 4px solid #ffb84c;
+  border-radius: 5px;
+  text-align: center;
+  background-color: #f1ecd8;
+}
+
+#project_table table {
+  margin: 0 auto;
+}
+
+#filter_section {
+  padding-top: 9%;
+}
+
+#import_form {
+  padding-top: 5%;
+}
+
+#filter_section a {
+  padding: 4%;
+  border: 2px solid #ffb84c;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+}
+
+#filter_section a:hover, .root_link a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+input#file {
+  margin: auto;
+}
+
+input[type="submit"] {
+  border-radius: 5px;
+  border: 2px solid #ffb84c;
+  margin-top: 2%;
+  padding: 2% 5%;
+  background-color: white;
+}
