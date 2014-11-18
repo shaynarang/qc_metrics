@@ -6,16 +6,16 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-      - if notice
-        .messages
-          .col-md-12.col-sm-12.col-xs.12
-            %p.notice
-              = notice
+    - if notice
+      .messages
+        .col-md-12.col-sm-12.col-xs.12
+          %p.notice
+            = notice
 
-      - if alert
-        .messages
-          .col-md-12.col-sm-12.col-xs.12
-            %p.alert
-              = alert
+    - if alert
+      .messages
+        .col-md-12.col-sm-12.col-xs.12
+          %p.alert
+            = alert
 
     = yield
