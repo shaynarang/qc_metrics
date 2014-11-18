@@ -28,8 +28,13 @@ table {
   background-color: #f1ecd8;
 }
 
-.root_link, #project_list {
+.root_link, #project_list, .messages {
   text-align: center;
+}
+
+.messages {
+  margin: 2% 0;
+  color: white !important;
 }
 
 .root_link {
